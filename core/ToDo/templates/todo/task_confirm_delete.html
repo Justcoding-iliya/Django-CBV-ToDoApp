@@ -1,0 +1,29 @@
+{% extends 'todo/base.html' %}
+{% load static %}
+
+{% block title %}Delete Task{% endblock %}
+
+{% block content %}
+<div class="modal modal-signin position-static d-block py-5" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-5 shadow">
+            <div class="modal-header p-5 pb-4 border-bottom-0">
+                <h2 class="fw-bold mb-0 text-danger">Delete Task</h2>
+                <a class="btn-close" href="{% url 'ToDo:task-list' %}"></a>
+            </div>
+            <div class="modal-body p-5 pt-0">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <p class="fs-5">Are you sure you want to delete "<strong>{{ object }}</strong>"?</p>
+
+                    <div class="d-flex gap-2 mt-4">
+                        <button type="submit" class="btn btn-danger w-50">Confirm</button>
+                        <a href="{% url 'ToDo:task-list' %}" class="btn btn-secondary w-50">Cancel</a>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
